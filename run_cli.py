@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel, PeftConfig
 
 #path
-adapter_path = "./manim_cli"  
+adapter_path = "./manim_cli_2"  
 
 # get base model
 peft_config = PeftConfig.from_pretrained(adapter_path)
@@ -16,7 +16,7 @@ base_model = AutoModelForSeq2SeqLM.from_pretrained(peft_config.base_model_name_o
 model = PeftModel.from_pretrained(base_model, adapter_path)
 model.eval()
 
-
+print(adapter_path)
 print("Enter your prompt for code generation (type 'exit' to quit):")
 while True:
     prompt = input(">>> ")
@@ -29,7 +29,7 @@ while True:
         attention_mask=inputs["attention_mask"],
         max_new_tokens=256,
         do_sample=True,
-        temperature=0.7,
+        temperature=0.4,
         top_p=0.9
     )
 
