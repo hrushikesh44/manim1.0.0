@@ -3,7 +3,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel, PeftConfig
 
 #path
-adapter_path = "./manim_cli_2"  
+adapter_path = "./manim_cli_2_real"  
 
 # get base model
 peft_config = PeftConfig.from_pretrained(adapter_path)
